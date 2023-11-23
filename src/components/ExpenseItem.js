@@ -22,38 +22,75 @@ const ExpenseItem = (props) => {
             type: 'ADD_EXPENSE',
             payload: expense
         });
-
     }
+
+    const decreaseAllocation = (name) => {
+        const expense = {
+            name: name,
+            cost: 10,
+        };
+
+        dispatch({
+            type: 'RED_EXPENSE',
+            payload: expense
+        });
+    }
+
+    
 
     return (
         <tr>
-        <td>{props.name}</td>
-        <td>{currency[0]}{props.cost}</td>
-        <td>
-            <button 
-                onClick={event=> increaseAllocation(props.name)}
-                style={{
-                    background: 'green', 
-                    color: 'white',
-                    fontSize: '40px',
-                    lineHeight: '40px', 
-                    height: '40px', 
-                    width: '40px',
-                    textAlign: 'center',
-                    border: 'none',
-                    borderRadius: '50%', 
-                    cursor: 'pointer',
-                    outline: 'none',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center', 
-                }}
-            >
-                +
-            </button>
-        </td>
+            <td>{props.name}</td>
+            <td>{currency[0]}{props.cost}</td>
+            <td>
+                <button 
+                    onClick={event=> increaseAllocation(props.name)}
+                    style={{
+                        background: 'green', 
+                        color: 'white',
+                        fontSize: '50px',
+                        lineHeight: '40px', 
+                        height: '40px', 
+                        width: '40px',
+                        textAlign: 'center',
+                        border: 'none',
+                        borderRadius: '50%', 
+                        cursor: 'pointer',
+                        outline: 'none',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center', 
+                    }}
+                >
+                    +
+                </button>
+            </td>
+            <td>
+                <button 
+                    onClick={event=> decreaseAllocation(props.name)}
+                    style={{
+                        background: 'red', 
+                        color: 'white',
+                        fontSize: '50px',
+                        lineHeight: '40px', 
+                        height: '40px', 
+                        width: '40px',
+                        textAlign: 'center',
+                        border: 'none',
+                        borderRadius: '50%', 
+                        cursor: 'pointer',
+                        outline: 'none',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center', 
+                    }}
+                >
+                    -
+                </button>
+            </td>
+            
 
-        <td><TiDelete size='1.5em' onClick={handleDeleteExpense}></TiDelete></td>
+            <td><TiDelete size='1.5em' onClick={handleDeleteExpense}></TiDelete></td>
         </tr>
     );
 };
